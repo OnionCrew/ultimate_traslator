@@ -1,0 +1,8 @@
+{
+    "text_file": "text_file.txt",
+    "target_language": "tr",
+    "output": "screen",
+    "max_characters": 600,
+    "max_words": 100,
+    "max_sentences": 5
+}

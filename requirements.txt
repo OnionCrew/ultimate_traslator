@@ -1,0 +1,5 @@
+googletrans==3.1.0a0
+googletrans==4.0.0rc1
+deep_translator==1.8.5
+langdetect==1.0.9
+PyYAML==5.4.1

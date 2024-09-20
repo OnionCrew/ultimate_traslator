@@ -1,0 +1,1 @@
+Bu, oluşturulan paketi kullanarak bir dosyadan çeviriyi gösteren örnek bir metindir.
