@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ project_name }}</title>
+    <style>
+        .group {
+            font-style: italic;
+            color: blue;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>{{ project_name }}</h1>
+    <p><strong>Студент:</strong> {{ student_name }}</p>
+    <p class="group"><strong>Группа:</strong> {{ student_group }}</p>
+
+    <h2>Таблиця Errors</h2>
+    <table>
+        <tr>
+            <th>Опис</th>
+            <th>Дата отримання</th>
+            <th>Важливість</th>
+            <th>Категорія</th>
+            <th>Джерело</th>
+        </tr>
+        {% for error in errors %}
+        <tr>
+            <td>{{ error.description }}</td>
+            <td>{{ error.received_date }}</td>
+            <td>{{ error.severity }}</td>
+            <td>{{ error.category }}</td>
+            <td>{{ error.source.name }}</td> <!-- Используем связанное имя, замените, если поле другое -->
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Таблиця Programmers</h2>
+    <table>
+        <tr>
+            <th>Прізвище</th>
+            <th>Ім'я</th>
+            <th>Телефон</th>
+        </tr>
+        {% for programmer in programmers %}
+        <tr>
+            <td>{{ programmer.last_name }}</td>
+            <td>{{ programmer.first_name }}</td>
+            <td>{{ programmer.phone }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Таблиця Error Fixes</h2>
+    <table>
+        <tr>
+            <th>Error Description</th>
+            <th>Start Date</th>
+            <th>Duration</th>
+            <th>Programmer</th>
+            <th>Cost per Day</th>
+        </tr>
+        {% for fix in error_fixes %}
+        <tr>
+            <td>{{ fix.error.description }}</td> <!-- Заменяем внешний ключ содержимым из таблицы Errors -->
+            <td>{{ fix.start_date }}</td>
+            <td>{{ fix.duration }}</td>
+            <td>{{ fix.programmer.first_name }} {{ fix.programmer.last_name }}</td> <!-- Заменяем внешний ключ содержимым из таблицы Programmers -->
+            <td>{{ fix.cost_per_day }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>
